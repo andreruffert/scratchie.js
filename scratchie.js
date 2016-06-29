@@ -183,17 +183,9 @@
             }
         }
 
-        if(e.pageX == undefined) {
-            pageX = e.touches[0].pageX;
-        } else {
-            pageX = e.pageX;
-        };
         
-        if(e.pageY == undefined) {
-            pageY = e.touches[0].pageY;
-        } else {
-            pageY = e.pageY;
-        };
+        pageX = e.pageX || e.touches[0].pageX;
+        pageY = e.pageY || e.touches[0].pageY;
 
 
         return {
