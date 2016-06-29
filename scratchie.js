@@ -169,7 +169,11 @@
     // Returns mouse position relative to the `canvas` parent
     Module.prototype.getRelativePosition = function(e, canvas) {
         var offsetX = 0,
-            offsetY = 0;
+            offsetY = 0,
+            pageX = 0,
+            pageY = 0;
+
+
 
         if (canvas.offsetParent !== undefined) {
             while (canvas !== null) {
@@ -179,9 +183,22 @@
             }
         }
 
+        if(e.pageX == undefined) {
+            pageX = e.touches[0].pageX;
+        } else {
+            pageX = e.pageX;
+        };
+        
+        if(e.pageY == undefined) {
+            pageY = e.touches[0].pageY;
+        } else {
+            pageY = e.pageY;
+        };
+
+
         return {
-            x: e.pageX - offsetX,
-            y: e.pageY - offsetY
+            x: pageX - offsetX,
+            y: pageY - offsetY
         };
     };
 
